@@ -14,6 +14,8 @@ jobs:
       - name: Merge main -> test
         uses: robotology/gh-action-nightly-merge@v1.3.3
         with:
+          allow_ff: true
+          ff_only: true
           stable_branch: main
           user_name: compliance-github-bot
           development_branch: test
@@ -24,6 +26,8 @@ jobs:
       - name: Merge main -> prod
         uses: robotology/gh-action-nightly-merge@v1.3.3
         with:
+          allow_ff: true
+          ff_only: true
           stable_branch: main
           user_name: compliance-github-bot
           development_branch: prod

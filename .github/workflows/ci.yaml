@@ -14,9 +14,9 @@ jobs:
         with:
           allow_ff: true
           ff_only: true
-          stable_branch: main
+          stable_branch: test
           user_name: compliance-github-bot
-          development_branch: test
+          development_branch: main
           push_token: 'GITHUB_TOKEN'
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -26,9 +26,9 @@ jobs:
         with:
           allow_ff: true
           ff_only: true
-          stable_branch: main
+          stable_branch: prod
           user_name: compliance-github-bot
-          development_branch: prod
+          development_branch: main
           push_token: 'GITHUB_TOKEN'
         env:
           GITHUB_TOKEN: ${{ github.token }}

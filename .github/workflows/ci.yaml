@@ -7,21 +7,26 @@ jobs:
   sync-branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@v1
 
-      - name: Merge development -> staging
-        uses: devmasx/merge-branch@master
+      - name: Merge main -> test
+        uses: robotology/gh-action-nightly-merge@v1.3.3
         with:
-          type: now
-          from_branch: main
-          target_branch: test
-          github_token: ${{ github.token }}
+          allow_ff: true
+          ff_only: true
+          stable_branch: main
+          user_name: compliance-github-bot
+          development_branch: test
+          push_token: ${{ github.token }}
 
-      - name: Merge staging -> uat
-        uses: devmasx/merge-branch@master
+      - name: Merge main -> prod
+        uses: robotology/gh-action-nightly-merge@v1.3.3
         with:
-          type: now
-          from_branch: main
-          target_branch: prod
-          github_token: ${{ github.token }}
+          allow_ff: true
+          ff_only: true
+          stable_branch: main
+          user_name: compliance-github-bot
+          development_branch: prod
+          push_token: ${{ github.token }}
 

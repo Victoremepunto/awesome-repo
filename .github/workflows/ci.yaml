@@ -7,7 +7,9 @@ jobs:
   sync-branch:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
 
       - name: Merge main -> test
         uses: robotology/gh-action-nightly-merge@v1.3.3

@@ -23,14 +23,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-      - name: Merge main -> prod
-        uses: robotology/gh-action-nightly-merge@v1.3.3
+#      - name: Set up Node
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: 12
+
+      - name: Opening pull request main -> prod
+        id: pull
+        uses: tretuna/sync-branches@1.4.0
         with:
-          allow_ff: true
-          ff_only: true
-          stable_branch: main
-          user_name: compliance-github-bot
-          development_branch: prod
-          push_token: 'GITHUB_TOKEN'
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: main
+          TO_BRANCH: prod
